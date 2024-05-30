@@ -1,2 +1,3 @@
-# lucian-canto-lopes1
-1
+# lucian-canto-lopesl7
+
+## Repositório para colocar projeto sugerido pela DIO no bootcamp de Python
