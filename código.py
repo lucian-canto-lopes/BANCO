@@ -2,13 +2,13 @@ menu = '''
 --------menu-------
 (D) = DEPOSITO
 (S) = SAQUE
-(E) = ESTRATO
+(E) = ExTRATO
 (Q) = SAIR
 -------------------
 '''
 saldo = 0
 qtd_de_depositos = 0
-estrato = []
+extrato = ""
 limite_diario_de_saque = 3
 while True:
     mensagem = input(menu)
@@ -19,7 +19,7 @@ while True:
             saldo += deposito
             qtd_de_depositos += 1
             print("deposito realizado!")
-            estrato.append(f"R${deposito:.2f}")
+            extrato += f"R${deposito:.2f}"
         else:
             print("Deposito inválido! ")
     elif mensagem.upper() == 'S':
@@ -29,14 +29,16 @@ while True:
             if saldo >= saque and limite_diario_de_saque > 0:
                 saldo -= saque
                 print("saque realizado!")
-                estrato.append(f"R${saque:.2f}")
+                extrato += f"R${saque:.2f}"
             else:
                 print("saldo abaixo ou limite de saque escedido")
         else:
             print("saque inválido")
     elif mensagem.upper() == 'E':
-        print("Extrato")
-        print(*estrato,f"saldo: R${saldo:.2f}", sep="\n" )
+        print("\n================ EXTRATO ================")
+        print("Não foram realizadas movimentações." if not extrato else extrato)
+        print(f"\nSaldo: R$ {saldo:.2f}")
+        print("==========================================")
     elif mensagem.upper() == 'Q':
         print("processo finalizado!")
         break
